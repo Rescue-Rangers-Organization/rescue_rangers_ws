@@ -3,13 +3,13 @@ ROS2 workspace for Rice University Rescue Rangers Senior Design Team's rover rob
 
 ## Workspace Structure
 rescue_rangers_ws
--  (ignored) build &rarr where intermediate files are stored on colcon build
-- (ignored) install &rarr where each package will be installed to on colcon build
-- (ignored) log &rarr logs - kinda useless
-- src &rarr where we write code that will be compiled on colcon build
+-  (ignored) build :right_arrow: where intermediate files are stored on colcon build
+- (ignored) install :right_arrow: where each package will be installed to on colcon build
+- (ignored) log :right_arrow: logs - kinda useless
+- src :right_arrow: where we write code that will be compiled on colcon build
 
 ## Package Structure (under development)
-- rover_description &rarr URDF / Mujoco Files for Simulation & IK
-- rpi_pkg &rarr package containing nodes for the rpi, such as drivetrain &amp arm control
-- jetson_pkg &rarr package containing nodes for the jetson, such as mapping & camera streaming
-- station_pkg &rarr package containing nodes for the control station, such as xbox controller
+- rover_description :right_arrow: URDF / Mujoco Files for Simulation & IK
+- rpi_pkg :right_arrow: package containing nodes for the rpi, such as drivetrain &amp arm control
+- jetson_pkg :right_arrow: package containing nodes for the jetson, such as mapping & camera streaming
+- station_pkg :right_arrow: package containing nodes for the control station, such as xbox controller
