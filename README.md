@@ -13,3 +13,13 @@ rescue_rangers_ws
 - rpi_pkg :arrow_right: package containing nodes for the rpi, such as drivetrain &amp arm control
 - jetson_pkg :arrow_right: package containing nodes for the jetson, such as mapping & camera streaming
 - station_pkg :arrow_right: package containing nodes for the control station, such as xbox controller
+
+
+## Building and Running
+Setup / Sourcing:
+```[bash]
+git clone <this repo>
+cd rescue_rangers_ws
+colcon build
+source install/setup.bash
+```
