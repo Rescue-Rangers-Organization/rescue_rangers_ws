@@ -1,0 +1,3 @@
+[submodule "src/rover_description"]
+	path = src/rover_description
+	url = https://github.com/Rescue-Rangers-Organization/rover_description.git
