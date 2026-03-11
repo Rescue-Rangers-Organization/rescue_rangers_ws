@@ -18,7 +18,7 @@ rescue_rangers_ws
 ## Building and Running
 Setup / Sourcing:
 ```[bash]
-git clone <this repo>
+git clone <this repo> --recurse-submodules
 cd rescue_rangers_ws
 colcon build
 source install/setup.bash
