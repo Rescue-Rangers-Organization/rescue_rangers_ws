@@ -10,6 +10,16 @@ rescue_rangers_ws
 
 ## Package Structure (under development)
 - rover_description :arrow_right: URDF / Mujoco Files for Simulation & IK. Note this is an imported repo! Link to repo can be found [here](https://github.com/Rescue-Rangers-Organization/rover_description)
-- rpi_pkg :arrow_right: package containing nodes for the rpi, such as drivetrain &amp arm control
+- rpi_pkg :arrow_right: package containing nodes for the rpi, such as drivetrain & arm control
 - jetson_pkg :arrow_right: package containing nodes for the jetson, such as mapping & camera streaming
 - station_pkg :arrow_right: package containing nodes for the control station, such as xbox controller
+
+
+## Building and Running
+Setup / Sourcing:
+```[bash]
+git clone <this repo>
+cd rescue_rangers_ws
+colcon build
+source install/setup.bash
+```
