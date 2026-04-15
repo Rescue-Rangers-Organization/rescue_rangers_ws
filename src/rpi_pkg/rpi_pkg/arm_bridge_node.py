@@ -4,16 +4,6 @@ from rclpy.node import Node
 from std_msgs.msg import String, Float64MultiArray, Bool
 from adafruit_servokit import ServoKit
 
-from dynamixel_api import DynamixelConnector, XL430W250TConnector, Motor
-
-# Setup connection
-with XL430W250TConnector(device="/dev/ttyUSB0", baud_rate=57600, dynamixel_id=1) as connector:
-    motor = Motor(connector)
-    motor.torque_enabled = True
-    motor.goal_position = 2048  # Move to middle position
-    motor.torque_enabled = False
-
-
 class ArmBridgeNode(Node):
     def __init__(self):
         # Initialize node with the name 'dummy_node'
