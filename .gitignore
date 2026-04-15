@@ -7,3 +7,4 @@
 # cloned / imported by user. This is to avoid doing a bunch of submodule stuff that ppl who don't know how git works will struggle with
 /lib/pyroki
 /lib/rover_arm_urdf
+/lib/__pycache__

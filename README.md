@@ -44,6 +44,6 @@ cd ..
 On rpi:
 ```[bash]
 source .venv/bin/activate
-sudo pip3 install adafruit-circuitpython-servokit
+pip install adafruit-circuitpython-servokit
 pip install dynamixel-sdk
 ```
