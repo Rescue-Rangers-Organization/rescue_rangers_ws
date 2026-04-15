@@ -30,5 +30,6 @@ setup(
    tests_require=['pytest'],
    entry_points={
        "console_scripts": list(map(console_script, executables)),
+       
    },
 )
