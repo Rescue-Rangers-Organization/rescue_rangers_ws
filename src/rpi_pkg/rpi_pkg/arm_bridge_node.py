@@ -20,18 +20,11 @@ class ArmBridgeNode(Node):
         self.want_grip = False
         self.gripper_released_pos = 90
         self.gripper_closed_pos = 0
-
-        # Publishes String messages to 'dummy_topic' with a queue size of 10
-        self.publisher_ = self.create_publisher(String, 'dummy_topic', 10)
         
-        # 2. Dummy Timer
-        # Calls 'timer_callback' every 1.0 second
         self.timer_period = 0.1  # seconds
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
         self.count = 0
 
-        # 3. Dummy Subscriber
-        # Listens to 'input_topic' and calls 'listener_callback' when data arrives
         self.subscription = self.create_subscription(
             Float64MultiArray,
             'arm_desired_angles_rad',
@@ -45,10 +38,7 @@ class ArmBridgeNode(Node):
             10)
 
     def timer_callback(self):
-        """Timer logic: creates and publishes a message."""
-        # msg = String()
-        # msg.data = f'Dummy message #{self.count}'
-        # self.publisher_.publish(msg)
+        """Timer logic."""
         # self.get_logger().info(f'Publishing: "{msg.data}"')
         if len(self.arm_desired_angles) == len(self.dynamixels):
             for i in range(len(self.dynamixels)):
@@ -60,7 +50,6 @@ class ArmBridgeNode(Node):
             self.gripper.angle = (self.gripper_released_pos)
         
         self.count += 1
-
 
     def arm_angle_callback(self, msg):
         """Subscriber logic: processes incoming messages."""
