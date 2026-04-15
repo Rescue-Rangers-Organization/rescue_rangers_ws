@@ -38,3 +38,12 @@ cd pyroki
 pip install -e .
 cd ..
 ```
+
+
+## interfacing with Dynamixels, Servo
+On rpi:
+```[bash]
+source .venv/bin/activate
+sudo pip3 install adafruit-circuitpython-servokit
+pip install dynamixel-sdk
+```
