@@ -21,4 +21,31 @@ ros2 topic pub --once /arm_motor_command std_msgs/msg/Float32MultiArray "{data: 
 
 - Note: velocity = 700 and time = 5 secs
   
+## Testing ik node
+After installing pyroki, setting up venv, activating
+```[bash]
+python3 -m colcon build --symlink-install
+source install/setup.bash
+ros2 run rpi_pkg ik_node
 
+# in one terminal
+ros2 topic echo /arm_desired_angles_rad
+
+# in another terminal
+ros2 topic pub --once /arm_desired_pos_ori std_msgs/msg/Float64MultiArray "{data: [0.5, 0.0, 0.5, 0, 0, 1, 0]}"
+```
+
+You should see something similar to the following:
+```[bash]
+layout:
+  dim: []
+  data_offset: 0
+data:
+- 0.15377405285835266
+- 1.572248935699463
+- -0.14610835909843445
+- -1.5708003044128418
+- -0.148228719830513
+- 1.4170541763305664
+---
+```

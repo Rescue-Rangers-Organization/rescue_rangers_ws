@@ -2,10 +2,10 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
-
+import numpy as np
 import pyroki as pk
 
-import solve_ik
+from rpi_pkg import solve_ik
 from yourdfpy import URDF
 import os
 
@@ -23,9 +23,10 @@ class IKNode(Node):
         self.publisher_ = self.create_publisher(Float64MultiArray, 'arm_desired_angles_rad', 10)
 
         package_path = get_package_share_directory('rpi_pkg')
-        workspace_root = os.path.abspath(os.path.join(package_path, '..', '..', '..'))
-        urdf = (URDF.load((workspace_root + "/lib/rover_arm_urdf/RescueRangersArm.urdf"), 
-                     mesh_dir=(workspace_root + "/lib/rover_arm_urdf/RescueRangersArmMeshes")))
+        workspace_root = os.path.abspath(os.path.join(package_path, '..', '..', '..', '..'))
+        self.get_logger().info(workspace_root)
+        urdf = URDF.load(fname_or_file=str(workspace_root + "/lib/rover_arm_urdf/RescueRangersArm.urdf"), 
+                     mesh_dir=str(workspace_root + "/lib/rover_arm_urdf/RescueRangersArmMeshes"))
         self.robot = pk.Robot.from_urdf(urdf)
         self.target_link_name = "frame"
         
@@ -39,13 +40,15 @@ class IKNode(Node):
 
     def ik_callback(self, msg):
         """Subscriber logic: processes incoming messages."""
+        self.get_logger().info(f'Got target pos: {msg.data}')
 
-        angles_rad = solve_ik.solve_ik(
-            robot=self.robot, target_link_name=self.target_link_name, target_position=msg.data[:3], target_wxyz=msg.data[3:]
+        angles_rad : np.ndarray = solve_ik.solve_ik(
+            robot=self.robot, target_link_name=self.target_link_name, target_position=np.array(msg.data[:3]), target_wxyz=np.array(msg.data[3:])
             )
-        
+        self.get_logger().info(f'Found target angles: {angles_rad.tolist()}')
+
         pub_msg = Float64MultiArray()
-        pub_msg.data = angles_rad
+        pub_msg.data = angles_rad.tolist()
         self.publisher_.publish(pub_msg)
         
 

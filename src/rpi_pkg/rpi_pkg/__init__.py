@@ -1,1 +1,1 @@
-import solve_ik
+from rpi_pkg import solve_ik

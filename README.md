@@ -36,6 +36,8 @@ source .venv/bin/activate
 cd lib
 cd pyroki
 pip install -e .
+pip install catkin_pkg
+pip install -U colcon-common-extensions
 cd ..
 ```
 

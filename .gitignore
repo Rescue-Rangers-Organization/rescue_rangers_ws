@@ -7,4 +7,7 @@
 # cloned / imported by user. This is to avoid doing a bunch of submodule stuff that ppl who don't know how git works will struggle with
 /lib/pyroki
 /lib/rover_arm_urdf
+
+# jax compiled python->c code
 /lib/__pycache__
+/src/rpi_pkg/rpi_pkg/__pycache__
