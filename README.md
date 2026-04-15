@@ -20,6 +20,21 @@ Setup / Sourcing:
 ```[bash]
 git clone <this repo> --recurse-submodules
 cd rescue_rangers_ws
+cd lib
+git clone https://github.com/Rescue-Rangers-Organization/rover_arm_urdf.git
+git clone https://github.com/chungmin99/pyroki.git
+cd ..
 colcon build
 source install/setup.bash
+```
+
+## Setting up venv
+```[bash]
+cd rescue_rangers_ws
+python3 -m venv .venv
+source .venv/bin/activate
+cd lib
+cd pyroki
+pip install -e .
+cd ..
 ```
